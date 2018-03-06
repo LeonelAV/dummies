@@ -21,12 +21,17 @@
   <input type="text" ng-model="searchDummy" class="form-control" placeholder="Select a Dummy" aria-label="Username" aria-describedby="basic-addon1">
 </div>
     
+    <canvas id="doughnut" class="chart chart-doughnut"
+      chart-data="data" chart-labels="labels">
+    </canvas>
+    
     <dir-pagination-controls 
        max-size="20"
        direction-links="true"
        boundary-links="true" >
     </dir-pagination-controls>
   
+
     <table class="table table-striped">
   <thead>
     <tr>
@@ -81,10 +86,16 @@
   </tbody>
 </table>
     
+    
+    
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 <script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+<script src="node_modules/zingchart/client/zingchart.min.js"></script>
+<script src="node_modules/zingchart-angularjs/src/zingchart-angularjs.js"></script>
+<script src="node_modules/chart.js/dist/Chart.js"></script>
+<script src="node_modules/angular-chart.js/dist/angular-chart.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <!--<script type="text/javascript" src="js/config.js"></script> -->
 <script type="text/javascript" src="js/services/apiService.js"></script>
