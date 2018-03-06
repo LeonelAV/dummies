@@ -1,0 +1,16 @@
+ 
+dir-pagination-controls ul {
+   margin-top: 40px;
+}
+
+
+ dir-pagination-controls  a {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #0275d8;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gatos">
+<head>
+<meta charset="UTF-8">
+<title>Dummies</title>
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller="homeController">
+
+<!-- <ng-view></ng-view> -->
+<div class="container">
+  <h1 class='display-3'>{{title}}</h1>
+  <button type="button" class="btn btn-outline-primary" ng-click='getDummies()'>Get Dummies</button>
+ <button type="button" class="btn btn-outline-primary" ng-click='getToken()'>token_test</button>
+    <div class="input-group mb-3 mt-5">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Search</span>
+  </div>
+  <input type="text" ng-model="searchDummy" class="form-control" placeholder="Select a Dummy" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+    
+    <dir-pagination-controls 
+       max-size="20"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
+  
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">
+         <a href="#" ng-click="order = 'ID__c'; ; sortReverse = !sortReverse">
+           ID
+        <span ng-show="order == 'ID__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'ID__c' && sortReverse" class="fa fa-caret-up"></span>
+         </a>
+        </th>
+      <th scope="col">
+          <a href="#" ng-click="order = 'First_Name__c'; sortReverse = !sortReverse">
+            First Name
+            <span ng-show="order == 'First_Name__c' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="order == 'First_Name__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+      <th scope="col">
+          <a href="#" ng-click="order = 'Last_Name__c'; sortReverse = !sortReverse">
+            Last Name
+               <span ng-show="order == 'Last_Name__c' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="order == 'Last_Name__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+      <th scope="col">
+        <a href="#" ng-click="order = 'Gender__c'; sortReverse = !sortReverse">
+          Gender
+          <span ng-show="order == 'Gender__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Gender__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+      </th>    
+      <th scope="col">
+        <a href="#" ng-click="order = 'Email__c'; sortReverse = !sortReverse">
+          Email
+        <span ng-show="order == 'Email__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Email__c' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+        </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr dir-paginate="dummy in Dummies | itemsPerPage:100 | orderBy: order : sortReverse | filter: searchDummy" >
+      <th scope="row">{{$index+1}}</th>
+      <td>{{dummy.ID__c}}</td>
+      <td>{{dummy.First_Name__c }}</td>
+      <td>{{dummy.Last_Name__c}}</td>
+      <td>{{dummy.Gender__c}}</td>    
+      <td><a href=''>{{dummy.Email__c}}</a></td>
+    </tr>
+  </tbody>
+</table>
+    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<!--<script type="text/javascript" src="js/config.js"></script> -->
+<script type="text/javascript" src="js/services/apiService.js"></script>
+<script type="text/javascript" src="js/controllers/homeController.js"></script>
+
+</body>
+</html>
