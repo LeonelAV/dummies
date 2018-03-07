@@ -13,25 +13,24 @@
 <div class="container">
   <h1 class='display-3'>{{title}}</h1>
   <button type="button" class="btn btn-outline-primary" ng-click='getDummies()'>Get Dummies</button>
- <button type="button" class="btn btn-outline-primary" ng-click='getToken()'>token_test</button>
-    <div class="input-group mb-3 mt-5">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">Search</span>
-  </div>
-  <input type="text" ng-model="searchDummy" class="form-control" placeholder="Select a Dummy" aria-label="Username" aria-describedby="basic-addon1">
-</div>
+<!-- <button type="button" class="btn btn-outline-primary" ng-click='getToken()'>token_test</button>-->
+   
     
     <canvas id="doughnut" class="chart chart-doughnut"
       chart-data="data" chart-labels="labels">
     </canvas>
-    
-    <dir-pagination-controls 
-       max-size="20"
-       direction-links="true"
-       boundary-links="true" >
-    </dir-pagination-controls>
-  
 
+   <div class="offset-md-2 col-md-8">
+    <p class="h5 mt-5" >There are {{Dummies.length}} Dummies in total: {{female}} are female and {{male}} are male</p>
+    <a href="https://www.w3schools.com">See the List of all Dummies</a>
+   </div>    
+     <div class="input-group mb-3 mt-5 offset-md-3 col-md-6">
+       <div class="input-group-prepend">
+       <span class="input-group-text" id="basic-addon1">Search</span>
+       </div>
+       <input type="text" ng-model="searchDummy" class="form-control" placeholder="e.g. Bradly " aria-label="Username" aria-describedby="basic-addon1">
+     </div>
+    
     <table class="table table-striped">
   <thead>
     <tr>
@@ -86,6 +85,11 @@
   </tbody>
 </table>
     
+    <dir-pagination-controls 
+       max-size="20"
+       direction-links="true"
+       boundary-links="true" >
+    </dir-pagination-controls>
     
     
 </div>

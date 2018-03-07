@@ -6,7 +6,7 @@ angular.module('gatos')
         return $http.get(urlDummies, {
             headers: {
                 'Content-type':'aplication/json',
-                'Authorization': 'Bearer 00D1r000000r55p!AR8AQLCkwdPr.K998jo9kPV07SXnn8m7pO8IbUrjABC4k5O53zgJsWOYmRtJoL4iEyvCv_kZumYIxdnT1N_n84i7v4EeTW9f'
+                'Authorization': 'Bearer 00D1r000000r55p!AR8AQCRF.swueKPwijb98Y46Vs.TBotpakhTIkxowjb5rHGp8zBQ6oJmAVq5TvMa1zIz0uBozXwwPHJDjZpsx_BkfIbkxE8l'
             }
         }).then (response => response.data);
     }

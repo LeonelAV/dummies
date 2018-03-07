@@ -5,7 +5,15 @@ angular.module('gatos')
     $scope.getDummies = function() {
       apiService.getDummies().then( function(response){
         $scope.Dummies = response;
-        console.log(response); 
+          console.log(response); 
+          
+          $scope.female = 0;
+          $scope.male = 0;
+          response.map(dummy => dummy.Gender__c === 'Female' ? $scope.female += 1 : $scope.male +=1)
+          console.log($scope.female);
+          console.log($scope.male);
+          $scope.labels = ["Female", "Male"];
+          $scope.data = [$scope.female, $scope.male];
     })
     }
     
@@ -17,9 +25,7 @@ angular.module('gatos')
         })
     }
     
-      $scope.labels = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-    
-      $scope.data = [300, 500, 100];
+     
     
 })
 
