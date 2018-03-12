@@ -13,4 +13,7 @@ angular.module('gatos')
         templateUrl: 'templates/list.html',
         controller: 'homeController'
     })
+    .otherwise({
+        redirectTo:'/'
+    })
 })

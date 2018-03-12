@@ -1,5 +1,29 @@
 <div class="offset-md-2 col-md-8">
-    <p class="h5 mt-5" >There are {{Dummies.length}} Dummies in total: {{female}} are female and {{male}} are male <a href='' ng-click='getList()'>See the List of all Dummies</a></p>
+    <p class="h5 mt-5" >There are {{Dummies.length}} Dummies from {{ totalOfNations}} different nations. {{female}} are female and {{male}} are male  <a href='' ng-click='getList()'>See the List of all Dummies</a></p>
 </div> 
 
-<div ng-include src="'templates/includes/genderGraph.html'"></div>
+<!--
+<div>
+  <button ng-click='getNationalities()'>Get Nationalities</button>
+  <button ng-click='getCreditCardTypes()'>Credit CArd Types</button>  
+    <button ng-click='getCreditCardsCount()'>Credit CArd counter</button> 
+</div>
+-->
+<div class="mt-5">
+<h4 class="text-center">Credit card Type</h4>
+    <div ng-include src="'templates/includes/creditCardGraph.html'"></div>
+
+<div class="row">
+  <div class="col-md-5">
+      <h4 class="text-center">Gender</h4>
+    <div ng-include src="'templates/includes/genderGraph.html'"></div>
+       
+  </div>
+  <div class="col-md-6">
+    <div ng-include src="'templates/includes/rankingGraph.html'"></div>
+  </div>
+</div>
+</div>
+
+
+

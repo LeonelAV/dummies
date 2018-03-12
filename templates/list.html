@@ -38,7 +38,35 @@
           <span ng-show="order == 'Gender__c' && !sortReverse" class="fa fa-caret-down"></span>
         <span ng-show="order == 'Gender__c' && sortReverse" class="fa fa-caret-up"></span>
           </a>
-      </th>    
+      </th> 
+         <th scope="col">
+        <a href='' ng-click="order = 'Nationality__c'; sortReverse = !sortReverse">
+          Nationality
+          <span ng-show="order == 'Nationality__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Nationality__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+      </th>
+         <th scope="col">
+        <a href='' ng-click="order = 'Company_Name__c'; sortReverse = !sortReverse">
+          Company
+          <span ng-show="order == 'Company_Name__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Company_Name__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+         </th>
+      <th scope="col">
+        <a href='' ng-click="order = 'Department__c'; sortReverse = !sortReverse">
+          Department
+          <span ng-show="order == 'Department__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Department__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+       </th>
+        <th scope="col">
+        <a href='' ng-click="order = 'Credit_Card_Type__c'; sortReverse = !sortReverse">
+          Credit Card
+          <span ng-show="order == 'Credit_Card_Type__c' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="order == 'Credit_Card_Type__c' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+      </th>
       <th scope="col">
         <a href='' ng-click="order = 'Email__c'; sortReverse = !sortReverse">
           Email
@@ -56,6 +84,10 @@
       <td>{{dummy.First_Name__c }}</td>
       <td>{{dummy.Last_Name__c}}</td>
       <td>{{dummy.Gender__c}}</td>    
+      <td>{{dummy.Nationality__c}}</td>    
+      <td>{{dummy.Company_Name__c}}</td>
+      <td>{{dummy.Department__c}}</td>
+      <td>{{dummy.Credit_Card_Type__c}}</td>
       <td><a href=''>{{dummy.Email__c}}</a></td>
     </tr>
   </tbody>
