@@ -1,0 +1,80 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" data-whatever="@getbootstrap">Add new Dummy</button>
+
+
+<!--Modal-->
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Dummy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+        <form name="myForm" role="form" id="registForm">
+          <div class="form-row">
+            <div class="col">
+              <input type="text"  ng-model="$parent.firstName" class="form-control" id="firstName" placeholder="First name" />
+            </div>
+            <div class="col">
+              <input type="text" ng-model="$parent.lastName" class="form-control" placeholder="Last name">
+            </div>
+          </div>
+            
+            <div class="row">
+            
+            <div class="form-group col-3 mt-3">
+               <input type="text" ng-model="$parent.id" class="form-control" id="inputAddress" placeholder="ID" required>
+             </div>
+            
+            <div class="form-group col-9 mt-3">
+                <input type="text" ng-model="$parent.companyName" class="form-control required" id="inputAddress" placeholder="Company">
+            </div>
+            </div>
+            
+             <div class="form-group mt-3">
+            <label for="inputGroupSelect">Gender</label>
+               <select ng-model="$parent.gender" class="custom-select" id="inputGroupSelect">
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+              </select>
+             </div>
+            
+            <div class="form-group mt-3">
+              <label for="inputGroupSelect01">Department</label>
+              <select  placeholder="asfdaf" ng-model="$parent.department" class="form-control" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option ng-repeat='department in filteredDepartList'>{{department}}</option>
+              </select>
+            </div>
+            
+             <div class="form-group mt-3">
+               <label for="inputGroupSelect02">Nationality</label>
+              <select ng-model="$parent.nationality" class="form-control" id="inputGroupSelect02">
+                <option ng-repeat="nation in nations" selected>{{ nation }}</option>
+              </select>
+            </div>
+            
+            <div class="form-group mt-3">
+              <label for="inputGroupSelect03">Credit Card</label>
+              <select ng-model="$parent.creditcard" class="form-control" id="inputGroupSelect03">
+                <option ng-repeat="card in creditCounterTypes" selected>{{ card }}</option>
+              </select>
+            </div>
+            
+             <div class="form-group mt-3">
+              <input type="text" ng-model="$parent.email" class="form-control" id="inputAddress" placeholder="Email">
+            </div>
+<!--             <button type="" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <button type="submit" ng-click="createAccount()" data-dismiss="modal" class="btn btn-primary" ng-disabled="myForm.$invalid">Send message</button>
+            
+        </div>
+</form>
+      </div>
+    </div>
+  </div>
+

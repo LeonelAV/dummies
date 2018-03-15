@@ -1,12 +1,17 @@
 <h1 class='display-3 d-flex justify-content-center'>{{title}}</h1>
 
-<div class="input-group mb-3 mt-5 offset-md-3 col-md-6">
+<div class='row'>
+  <div class="mt-5 offset-md-5 col-md-6">      
+    <div ng-include src="'templates/includes/createAccount.html'"></div>
+  </div>
+  <div class="input-group mb-3 mt-5 offset-md-3 col-md-6">
        <div class="input-group-prepend">
        <span class="input-group-text" id="basic-addon1">Search</span>
        </div>
        <input type="text" ng-model="searchDummy" class="form-control" placeholder="e.g. Bradly " aria-label="Username" aria-describedby="basic-addon1">
-     </div>
-    
+  </div> 
+</div>
+
     <table class="table table-striped">
   <thead>
     <tr>
@@ -74,11 +79,14 @@
         <span ng-show="order == 'Email__c' && sortReverse" class="fa fa-caret-up"></span>
         </a>
         </th>
+     <th scope="col">
+          <p>Delete</p>
+     </th>    
       
     </tr>
   </thead>
   <tbody>
-    <tr dir-paginate="dummy in Dummies | itemsPerPage:100 | orderBy: order : sortReverse | filter: searchDummy" >
+    <tr ng-repeat="dummy in Dummies | orderBy: order : sortReverse | filter: searchDummy" >
       <th scope="row">{{$index+1}}</th>
       <td>{{dummy.ID__c}}</td>
       <td>{{dummy.First_Name__c }}</td>
@@ -87,23 +95,26 @@
       <td>{{dummy.Nationality__c}}</td>    
       <td>{{dummy.Company_Name__c}}</td>
       <td>{{dummy.Department__c}}</td>
-      <td>{{dummy.Credit_Card_Type__c}}</td>
+      <td>{{dummy.Credit_Card_Type__c}}</td>   
       <td><a href=''>{{dummy.Email__c}}</a></td>
+      <td><button type="button" class="btn btn-danger" ng-click="deleteDummy(dummy.Id, dummy.First_Name__c, dummy.Last_Name__c)" data-toggle="tooltip" data-placement="top" title="Double Click">Delete</button></td>
     </tr>
   </tbody>
 </table>
     
 <div class="row d-flex align-items-center">
   <div class="col-md-6">
+<!--
     <dir-pagination-controls 
          max-size="20"
          direction-links="true"
          boundary-links="true" >
     </dir-pagination-controls>
+-->
   </div>
   <div class="offset-4 col-md-2">
     <button type="button" class="btn btn-outline-dark" ng-click="goBack()">Go back</button>
-    <button type="submit" class="btn btn-outline-green" href="#">Go back</button>
+    <button type="submit" class="btn btn-outline-green"  href="#">Go back</button>
   </div>
 </div>
     

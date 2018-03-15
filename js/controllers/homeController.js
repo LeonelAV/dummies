@@ -1,12 +1,13 @@
 angular.module('gatos')
-  .controller('homeController', function($scope, $rootScope, $location, apiService){
+  .controller('homeController', function($scope, $rootScope, $location, apiService, toastr){
     $scope.title ='Dummies List';
     
     $scope.getDummies = function() {
       apiService.getDummies().then( function(response){
         $rootScope.Dummies = response;
-          console.log(response); 
-           
+          console.log(response[0].Id)
+          console.log(response);
+          
           $rootScope.female = 0;
           $rootScope.male = 0;
           response.map(dummy => dummy.Gender__c === 'Female' ? $rootScope.female += 1 : $rootScope.male +=1);
@@ -45,7 +46,7 @@ angular.module('gatos')
             }
           };   
     })
-        $location.path('/graphInfo');
+        $location.path() === '/list' ? $location.path('/list') : $location.path('/graphInfo')
     }
     
     
@@ -64,26 +65,31 @@ angular.module('gatos')
     
     ($scope.getNationalities = function() {
       apiService.getNationalities().then( function(response) {
-          $scope.totalOfNations = response.length
+          $scope.totalOfNations = response.length;
+          $scope.nations = response;
           console.log(response)
           console.log($scope.totalOfNations);
       })
     })();
     
     
+    ($scope.getDepartments = function() {
+        apiService.getDepartments().then( function(response) {
+            $scope.filteredDepartList = [];
+            response.map( department => $scope.filteredDepartList.push(department.Department__c));
+            console.log($scope.filteredDepartList)
+
+        })
+    })();
+    
     
 //    credit card controller
     ($scope.getCreditCardTypes = function() {
-        
       apiService.getCreditCardTypes().then( function(response) {
       $scope.creditCardTypes = response;
-      console.log(response);
-         
-          
+      console.log(response); 
       $scope.creditCounterTypes = $scope.creditCardTypes.map(data => data.split(":").splice(0,1).join());
-          
       $scope.creditCardNumbers = $scope.creditCardTypes.map(data => Number(data.split(":").splice(1,1)));
-          
       console.log( $scope.creditCounterTypes);
       console.log( $scope.creditCardNumbers);
           
@@ -91,8 +97,47 @@ angular.module('gatos')
     })();
     
     
+    $scope.createAccount = function() {
+        console.log('Button was clicked');
+        var url= 'https://dummyleoapp-dev-ed.my.salesforce.com/services/data/v20.0/sobjects/Dummy_Accounts__c/';
         
+        
+        
+         var data = {"Name": $scope.firstName + ' ' + $scope.lastName,
+                    "First_Name__c": $scope.firstName,
+                    "Last_Name__c": $scope.lastName,
+                    "Gender__c": $scope.gender,
+                    "ID__c": $scope.id,
+                    "Nationality__c": $scope.nationality,
+                    "Company_Name__c": $scope.companyName,
+                    "Department__c": $scope.department,
+                    "Credit_Card_Type__c": $scope.creditcard,
+                    "Email__c": $scope.email
+                    };
+        
+          console.log(data)
+         
+       apiService.createAccount(data) 
+           .then( msg => {
+             console.log(data);
+             toastr.success('Created a new Dummy called ' + $scope.firstName)
+       });
+        $scope.getDummies();
+        console.log('Controller '+ $scope.firstName)
+}
+        
+    $scope.deleteDummy = function(id, firstName, lastName){
+        console.log(id);
+        console.log(firstName);
+        apiService.deleteDummy(id)
+          .then(msg => {
+            toastr.error(firstName + ' ' + lastName +  ' was Removed', msg)
+        })
+        $scope.getDummies();
+    }
+    
 
+    
 //    $scope.getToken = function(){
 //        apiService.getToken().then(function(response){
 //            console.log(response)
